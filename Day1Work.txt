@@ -1,0 +1,663 @@
+CLR -> 
+
+Assembly - single deployable unit - PE
+  Code - CIL
+  Meta Data - Information mation about the types
+  Manifest - > Info about the assembly that is stored in the assembly
+
+Class -> Blue print of an object/ user defined data type
+Object -> any realtime entity
+ void UnderstandingArray()
+ {
+     int[] numbers = { 100, 45, 89, 34, 78 };
+     for (int i = 0; i < numbers.Length; i++)
+     {
+         Console.WriteLine(i);
+     }
+ }
+ void CreateAndPrintProductArray()
+ {
+     Product[] products = new Product[3];
+     products[0] = new Product { Id = 101, Name = "Pencil", Price = 2.3f, Quantity = 5, Description = "Used for writing and drawing" };
+     products[1] = new Product { Id = 102, Name = "Pen", Price = 5.5f, Quantity = 3, Description = "Write and sign" };
+     products[2] = new Product { Id = 103, Name = "Eraser", Price = 1.5f, Quantity = 10, Description = "Erase and clean" };
+     Array.Sort(products);
+     for (int i = 0; i < products.Length; i++)
+     {
+         products[i].DisplayProduct();
+         Console.WriteLine("------------------------------");
+     }
+ }
+
+           //Console.WriteLine("hello world!!");
+           //Product product = new Product(101, "Pencil", 5, 1.2f, "Used to write or draw");
+           //product.DisplayProduct();
+           new Program().CreateAndPrintProductArray();
+           //Customer customer = new Customer() { Id = 1, Name = "ABC", Age = 34, Phone = "1234567890" };
+           //Console.WriteLine(customer);
+
+Product -
+   Id
+   Name
+   Price
+   Quantity
+   Pic
+   Description
+
+   DisplayDetails()
+
+
+Program
+   Sequence
+   Selection
+   Iteration
+CRUD 
+ Create
+ Read
+ Update
+ Delete
+
+Multiple projects
+   Libraries
+     Models -> Class
+     DAL -> array to an collection Generic -> ADO.NET-> Database
+     BL -> Business Rules
+   FE - UI
+
+Customer
+   Id
+   Name
+   Phone
+   Address
+   Age
+
+Cart
+  Id
+  CustomerId
+  List<Product>
+  
+
+CartItems
+  CartId
+  ProductId
+  Quantity
+  Price
+
+
+Data Source=DESKTOP-1C1EU5R\SQLSERVER2019G3;user id=sa;password=p@ssw0rd;Initial Catalog=dbShopping24Nov23;
+
+            //connection.Open();
+            //SqlDataReader reader = cmdSelect.ExecuteReader();
+            //while(reader.Read())
+            //{
+            //    Product product = new Product();
+            //    product.Id = Convert.ToInt32(reader[0]);//unboxing
+            //    product.Name = reader[1].ToString();
+            //    product.Price = Convert.ToSingle(reader[2]);
+            //    product.Quantity = Convert.ToInt32(reader[3]);
+            //    product.Description = reader[4].ToString();
+            //    products.Add(product);
+            //}
+            //connection.Close();
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingApp
+{
+    internal class Product
+    {
+        //public int Id;//variable
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public float Price { get; set; }
+        public string Description { get; set; }
+
+        public void DisplayProduct()
+        {
+            Console.WriteLine("Product Id "+Id);
+            Console.WriteLine("Product Name " + Name);
+            Console.WriteLine("Poduct Price ${0}\nProduct Quantity {1}",Price,Quantity);
+            Console.WriteLine("Product Description : "+Description);
+        }
+
+        public bool IsAvailable()
+        {
+            return Quantity > 0 ? true:false;
+        }
+
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("hello world!!");
+            Product product = new Product(101, "Pencil", 5, 1.2f, "Used to write or draw");
+            product.DisplayProduct();
+            Console.ReadKey();
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingApp
+{
+    internal class Program
+    {
+        void UnderstandingArray()
+        {
+            int[] numbers = { 100, 45, 89, 34, 78 };
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        void CreateAndPrintProductArray()
+        {
+            Product[] products = new Product[3];
+            products[0] = new Product { Id = 101, Name = "Pencil", Price = 2.3f, Quantity = 5, Description = "Used for writing and drawing" };
+            products[1] = new Product { Id = 102, Name = "Pen", Price = 5.5f, Quantity = 3, Description = "Write and sign" };
+            products[2] = new Product { Id = 103, Name = "Eraser", Price = 1.5f, Quantity = 10, Description = "Erase and clean" };
+            for (int i = 0; i < products.Length; i++)
+            {
+                products[i].DisplayProduct();
+                Console.WriteLine("------------------------------");
+            }
+        }
+        static void Main(string[] args)
+        {
+            //Console.WriteLine("hello world!!");
+            //Product product = new Product(101, "Pencil", 5, 1.2f, "Used to write or draw");
+            //product.DisplayProduct();
+            new Program().CreateAndPrintProductArray();
+            Console.ReadKey();
+        }
+    }
+}
+-----------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingModelLibrary
+{
+    public class Product : IComparable<Product>
+    {
+        //public int Id;//variable
+        int Number1;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public float Price { get; set; }
+        public string Description { get; set; }
+
+        public Product()
+        {
+
+        }
+
+        public Product(int id, string name, int quantity, float price, string description)
+        {
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Price = price;
+            Description = description;
+        }
+
+        public void DisplayProduct()
+        {
+            Console.WriteLine("Product Id " + Id);
+            Console.WriteLine("Product Name " + Name);
+            Console.WriteLine("Poduct Price ${0}\nProduct Quantity {1}", Price, Quantity);
+            Console.WriteLine("Product Description : " + Description);
+        }
+
+        public bool IsAvailable()
+        {
+            return Quantity > 0 ? true : false;
+        }
+
+        public int CompareTo(Product other)
+        {
+            return this.Price.CompareTo(other.Price);
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingModelLibrary
+{
+    public class Customer:IComparable
+    {
+        //Object obj;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string  Phone { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            Customer customer = obj as Customer;//casts the obj to CUstomer type
+            return this.Name.CompareTo(customer.Name);//using string's implementation of IComparable
+        }
+
+        public override string ToString()
+        {
+            return "Customer Id : " + Id
+                + "\nCustomer Name : " + Name
+                + "\nCustomer Phone : " + Phone
+                + "\nCustomer Age : " + Age;
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ShoppingModelLibrary
+{
+    public class Cart 
+    {
+        public int CartId { get; set; }
+        public Customer Customer { get; set; }
+        public List<Product> Products { get; set; }
+       
+    }
+}
+
+
+using ShoppingModelLibrary;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ShoppingDALLibrary
+{
+    public  class ProductRepository
+    {
+        List<Product> products;
+        public ProductRepository()
+        {
+            products = new List<Product>();
+        }
+        int GenerateProductId()
+        {
+            if( products.Count > 0 )
+            {
+                return (products[products.Count-1].Id+1);
+            }
+            return 101;
+        }
+        public virtual Product Add(Product product)
+        {
+            product.Id = GenerateProductId();
+            products.Add(product);
+            return product;
+        }
+        public virtual List<Product> GetProducts()
+        {
+            return products;
+        }
+        public virtual Product GetProductById(int id)
+        {
+            //foreach (var item in products)
+            //{
+            //    if(item.Id==id)
+            //    {
+            //        return item;
+            //    }
+            //}
+            //return null;
+            var product = products.FirstOrDefault(p => p.Id == id);
+            return product;
+        }
+        public virtual Product Update(Product product) 
+        { 
+            Product myProduct = GetProductById(product.Id);
+            if (myProduct!=null)
+            {
+                myProduct.Name = product.Name;
+                myProduct.Description = product.Description;
+                myProduct.Price = product.Price;
+                myProduct.Quantity = product.Quantity;
+                return myProduct;
+            }
+            return null;
+        }
+        public virtual Product Delete(int id)
+        {
+            Product myProduct = GetProductById(id);
+            if (myProduct != null)
+            {
+                products.Remove(myProduct);
+                return myProduct;
+            }
+            return null;
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using ShoppingDALLibrary;
+using ShoppingModelLibrary;
+
+namespace ShoppingApp
+{
+    internal class Program
+    {
+       void TestDAL()
+        {
+            ProductRepository repo = new ProductRepository();
+            repo.Add(new Product { Name = "Pencil", Price = 2.3f, Quantity = 5, Description = "Used for writing and drawing" });
+            repo.Add(new Product { Name = "Pen", Price = 5.5f, Quantity = 3, Description = "Write and sign" });
+            var products = repo.GetProducts();
+            foreach (var product in products)
+            {
+                product.DisplayProduct();
+                Console.WriteLine("_______________________________________");
+            }
+            Product newProduct = new Product { Id = 102,Name = "Gel Pen", Price = 5.8f, Quantity = 9, Description = "Write and sign real smooth" };
+            repo.Update(newProduct);
+            Console.WriteLine("After Updation");
+            foreach (var product in products)
+            {
+               
+                product.DisplayProduct();
+                Console.WriteLine("_______________________________________");
+            }
+            repo.Delete(102);
+            Console.WriteLine("After Delete");
+            foreach (var product in products)
+            {
+
+                product.DisplayProduct();
+                Console.WriteLine("_______________________________________");
+            }
+
+        }
+        static void Main(string[] args)
+        {
+            new Program().TestDAL();    
+            Console.ReadKey();
+        }
+    }
+}
+-------------------------------------------
+create database dbShopping24Nov23
+Go
+use dbShopping24Nov23
+Go
+
+create table Products
+(id int identity(101,1) primary key,
+name varchar(20),
+price float,
+quantity int,
+description varchar(1000))
+GO
+
+
+Select * from Products
+
+
+create proc proc_AddProduct(@pname varchar(20),@pprice float,@pquantity int,@pdecription varchar(1000))
+as
+begin
+insert into products(name,price,quantity,description)
+ values(@pname,@pprice,@pquantity,@pdecription)
+ end
+  Go
+
+exec proc_AddProduct 'test',1,1,'check'
+--------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using ShoppingModelLibrary;
+
+namespace ShoppingDALLibrary
+{
+    public class ProductRepositoryDb:ProductRepository
+    {
+        SqlConnection connection;
+        public ProductRepositoryDb()
+        {
+            this.connection = new SqlConnection("Data Source=DESKTOP-1C1EU5R\\SQLSERVER2019G3;user id=sa;password=P@ssw0rd;Initial Catalog=dbShopping24Nov23;");
+        }
+        public override Product Add(Product product)
+        {
+            SqlCommand cmdInsert = new SqlCommand("proc_AddProduct", connection);
+            cmdInsert.CommandType = CommandType.StoredProcedure;
+            cmdInsert.Parameters.AddWithValue("@pname", product.Id);
+            cmdInsert.Parameters.AddWithValue("@pprice", product.Price);
+            cmdInsert.Parameters.AddWithValue("@pquantity", product.Quantity);
+            cmdInsert.Parameters.AddWithValue("@pdecription", product.Description);
+            connection.Open();
+            var result = cmdInsert.ExecuteNonQuery();
+            connection.Close();
+            if (result > 0)
+                return product;
+            return null;
+        }
+        public override List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+            SqlCommand cmdSelect = new SqlCommand("Select * from products", connection);
+            connection.Open();
+            SqlDataReader reader = cmdSelect.ExecuteReader();
+            while(reader.Read())
+            {
+                Product product = new Product();
+                product.Id = Convert.ToInt32(reader[0]);//unboxing
+                product.Name = reader[1].ToString();
+                product.Price = Convert.ToSingle(reader[2]);
+                product.Quantity = Convert.ToInt32(reader[3]);
+                product.Description = reader[4].ToString();
+                products.Add(product);
+            }
+            connection.Close();
+            return products;
+        }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using ShoppingModelLibrary;
+
+namespace ShoppingDALLibrary
+{
+    public class ProductRepositoryDb:ProductRepository
+    {
+        SqlConnection connection;
+        public ProductRepositoryDb()
+        {
+            this.connection = new SqlConnection("Data Source=DESKTOP-1C1EU5R\\SQLSERVER2019G3;user id=sa;password=P@ssw0rd;Initial Catalog=dbShopping24Nov23;");
+        }
+        public override Product Add(Product product)
+        {
+            SqlCommand cmdInsert = new SqlCommand("proc_AddProduct", connection);
+            cmdInsert.CommandType = CommandType.StoredProcedure;
+            cmdInsert.Parameters.AddWithValue("@pname", product.Name);
+            cmdInsert.Parameters.AddWithValue("@pprice", product.Price);
+            cmdInsert.Parameters.AddWithValue("@pquantity", product.Quantity);
+            cmdInsert.Parameters.AddWithValue("@pdecription", product.Description);
+            connection.Open();
+            var result = cmdInsert.ExecuteNonQuery();
+            connection.Close();
+            if (result > 0)
+                return product;
+            return null;
+        }
+        public override List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+            SqlCommand cmdSelect = new SqlCommand("Select * from products", connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmdSelect);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);//open connection pull the data using teh query close the connection
+            for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
+            {
+                Product product = new Product();
+                product.Id = Convert.ToInt32(dataSet.Tables[0].Rows[i][0]);//unboxing
+                product.Name = dataSet.Tables[0].Rows[i][1].ToString();
+                product.Price = Convert.ToSingle(dataSet.Tables[0].Rows[i][2]);
+                product.Quantity = Convert.ToInt32(dataSet.Tables[0].Rows[i][3]);
+                product.Description = dataSet.Tables[0].Rows[i][4].ToString();
+                products.Add(product);
+            }
+            return products;
+        }
+    }
+}
+-------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using ShoppingModelLibrary;
+
+namespace ShoppingDALLibrary
+{
+    public class ProductRepositoryDb:ProductRepository
+    {
+        SqlConnection connection;
+        public ProductRepositoryDb()
+        {
+            this.connection = new SqlConnection("Data Source=DESKTOP-1C1EU5R\\SQLSERVER2019G3;user id=sa;password=P@ssw0rd;Initial Catalog=dbShopping24Nov23;");
+        }
+        public override Product Add(Product product)
+        {
+            SqlCommand cmdInsert = new SqlCommand("proc_AddProduct", connection);
+            cmdInsert.CommandType = CommandType.StoredProcedure;
+            cmdInsert.Parameters.AddWithValue("@pname", product.Name);
+            cmdInsert.Parameters.AddWithValue("@pprice", product.Price);
+            cmdInsert.Parameters.AddWithValue("@pquantity", product.Quantity);
+            cmdInsert.Parameters.AddWithValue("@pdecription", product.Description);
+            connection.Open();
+            var result = cmdInsert.ExecuteNonQuery();
+            connection.Close();
+            if (result > 0)
+                return product;
+            return null;
+        }
+        public override List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+            SqlCommand cmdSelect = new SqlCommand("Select * from products", connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmdSelect);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);//open connection pull the data using teh query close the connection
+            //for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
+            //{
+            //    Product product = new Product();
+            //    product.Id = Convert.ToInt32(dataSet.Tables[0].Rows[i][0]);//unboxing
+            //    product.Name = dataSet.Tables[0].Rows[i][1].ToString();
+            //    product.Price = Convert.ToSingle(dataSet.Tables[0].Rows[i][2]);
+            //    product.Quantity = Convert.ToInt32(dataSet.Tables[0].Rows[i][3]);
+            //    product.Description = dataSet.Tables[0].Rows[i][4].ToString();
+            //    products.Add(product);
+            //}
+             foreach(DataRow dataRow in dataSet.Tables[0].Rows)
+            {
+                Product product = new Product();
+                product.Id = Convert.ToInt32(dataRow[0]);//unboxing
+                product.Name = dataRow[1].ToString();
+                product.Price = Convert.ToSingle(dataRow[2]);
+                product.Quantity = Convert.ToInt32(dataRow[3]);
+                product.Description = dataRow[4].ToString();
+                products.Add(product);
+            }
+            return products;
+        }
+      public override Product Update(Product product)
+    {
+        SqlCommand cmdUpdate = new SqlCommand("proc_updateProduct", connection);
+        cmdUpdate.CommandType = CommandType.StoredProcedure;
+        cmdUpdate.Parameters.AddWithValue("@pid", product.Id);
+        cmdUpdate.Parameters.AddWithValue("@pname", product.Name);
+        cmdUpdate.Parameters.AddWithValue("@pprice", product.Price);
+        cmdUpdate.Parameters.AddWithValue("@pquantity", product.Quantity);
+        cmdUpdate.Parameters.AddWithValue("@pdecription", product.Description);
+        connection.Open();
+        var result = cmdUpdate.ExecuteNonQuery();//DML query
+        connection.Close();
+        if (result > 0)
+            return product;
+        return null;
+    }
+    }
+}
+-----------------------------------------
+
+create proc proc_updateProduct(@pid int,@pname varchar(20),@pprice float,@pquantity int,@pdecription varchar(1000))
+as
+begin
+	update products set name=@pname,price=@pprice,quantity=@pquantity,description=@pdecription
+	where id=@pid
+ end
+ Go
+
+Create the customer Repository
+
+create the update and delete methods
+
+Create table for customer
+Impletement the CRUD
+
+
+
+
+

@@ -1,0 +1,17 @@
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingApp.exe.config
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingApp.exe
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingApp.pdb
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\obj\Debug\ShoppingApp.csproj.AssemblyReference.cache
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\obj\Debug\ShoppingApp.csproj.CoreCompileInputs.cache
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\obj\Debug\ShoppingApp.exe
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\obj\Debug\ShoppingApp.pdb
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingModelLibrary.dll
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingModelLibrary.pdb
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\obj\Debug\ShoppingApp.csproj.CopyComplete
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingDALLibrary.dll
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingDALLibrary.pdb
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\EntityFramework.dll
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\ShoppingDALLibrary.dll.config
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\EntityFramework.xml
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\EntityFramework.SqlServer.dll
+D:\Data\d drive\Corp\TheKnowledgeAcadamy\23Nov23\ShoppingSolution\ShoppingApp\bin\Debug\EntityFramework.SqlServer.xml
